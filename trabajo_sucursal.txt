@@ -1,0 +1,28 @@
+import datetime
+
+def ingresar_venta():
+    fecha_actual = datetime.date.today().strftime("%Y-%m-%d")
+
+    id_producto = input("Ingrese el ID del producto vendido: ")
+    cantidad = input("Ingrese la cantidad vendida: ")
+
+    with open("ventas_diarias.txt", "a") as archivo:
+        archivo.write(f"{fecha_actual},{id_producto},{cantidad}\n")
+
+def main():
+    while True:
+        print("\n1. Ingresar Venta")
+        print("2. Salir")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == '1':
+            ingresar_venta()
+        elif opcion == '2':
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opción no válida. Por favor, seleccione una opción válida.")
+
+if __name__ == "__main__":
+    main()
